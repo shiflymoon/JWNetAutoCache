@@ -21,7 +21,8 @@
     [JWCacheURLProtocol startListeningNetWorking];
     UIWebView *webview = [[UIWebView alloc] initWithFrame:self.view.bounds];
     [self.view addSubview:webview];
-    NSURL *URL = [NSURL URLWithString:@"https://m.jd.com"];
+    //WKWebiew支持缓存请参考https://github.com/yeatse/NSURLProtocol-WebKitSupport
+    NSURL *URL = [NSURL URLWithString:/*@"https://m.jd.com"*/@"http://test-eits-monitor.pa18.com:19080/wall/indicator"];
     NSURLRequest *request = [[NSURLRequest alloc] initWithURL:URL];
     [webview loadRequest:request];
     

@@ -215,6 +215,7 @@ static NSString * const checkUpdateInBgKey = @"checkUpdateInBg";
         if (!self.data) {
             return;
         }
+        [NSURLCache sharedURLCache].diskCapacity = 200 * 1024 * 1024;
         NSCachedURLResponse *cacheUrlResponse = [[NSCachedURLResponse alloc] initWithResponse:task.response data:self.data];
         [[NSURLCache sharedURLCache] storeCachedResponse:cacheUrlResponse forRequest:self.request];
         self.data = nil;
