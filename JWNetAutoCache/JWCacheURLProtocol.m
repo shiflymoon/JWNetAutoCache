@@ -126,7 +126,9 @@ static NSString * const checkUpdateInBgKey = @"checkUpdateInBg";
 }
 
 - (void)backgroundCheckUpdate{
-    __weak typeof(self) weakSelf = self;
+   /*__weak typeof(self) weakSelf = self;*/
+    __strong typeof(self) weakSelf = self;//不能使用__weak，使用weak导致self提前被释放，造成不重新请求问题
+    
     [[[JWUrlCacheConfig instance] backgroundNetQueue] addOperationWithBlock:^{
         NSDate *updateDate = [[JWUrlCacheConfig instance].urlDict objectForKey:weakSelf.request.URL.absoluteString];
         if (updateDate) {
